@@ -1,0 +1,17 @@
+USE auth_gateway;
+
+  CREATE TABLE IF NOT EXISTS app_user (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+      username VARCHAR(64) NOT NULL,
+      password_hash VARCHAR(255) NOT NULL,
+      role VARCHAR(32) NOT NULL DEFAULT 'USER',
+      enabled BOOLEAN NOT NULL DEFAULT TRUE,
+      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+          ON UPDATE CURRENT_TIMESTAMP,
+
+      PRIMARY KEY (id),
+      UNIQUE KEY uk_app_user_username (username)
+  ) ENGINE=InnoDB
+    DEFAULT CHARACTER SET utf8mb4
+    COLLATE utf8mb4_0900_ai_ci;
