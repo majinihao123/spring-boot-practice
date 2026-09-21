@@ -84,6 +84,10 @@ public class SecurityConfig {
                         HttpMethod.POST,
                         "/auth/login"
                 ).permitAll()
+                .requestMatchers(
+                        HttpMethod.GET,
+                        "/welcome"
+                ).permitAll()
                 .requestMatchers("/error").permitAll()
                 .anyRequest().authenticated()
                 )
